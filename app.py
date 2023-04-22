@@ -1,9 +1,12 @@
 from flask import Flask, request, jsonify, make_response
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity,decode_token
+from flask_cors import CORS
 from flask_mysqldb import MySQL
 import mysql.connector
 import jwt
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
+
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
